@@ -11,7 +11,7 @@ class DiceTest {
     @RepeatedTest(100)
     void rollDice() {
         // given
-        final Dice dice = new Dice(10);
+        final Dice dice = Dice.bound(10);
 
         // when
         final int actual = dice.roll();

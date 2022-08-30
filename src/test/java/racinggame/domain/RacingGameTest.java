@@ -8,6 +8,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 class RacingGameTest {
 
+    private static final Dice DICE = Dice.bound(10);
+
     @DisplayName("게임 진행 중")
     @ParameterizedTest
     @CsvSource(value = {
@@ -20,7 +22,7 @@ class RacingGameTest {
 
         //when
         for (int i = 0; i < raceCount; i++) {
-            racingGame.race();
+            racingGame.race(DICE);
         }
 
         final boolean actual = racingGame.isPlaying();

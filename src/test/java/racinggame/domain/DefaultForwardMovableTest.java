@@ -15,7 +15,7 @@ class DefaultForwardMovableTest {
         "4, true",
     })
     void movable(int value, boolean expected) {
-        final DefaultForwardMovable defaultForwardMovable = new DefaultForwardMovable(value);
+        final ForwardMovable defaultForwardMovable = DefaultForwardMovable.of(value);
 
         final boolean actual = defaultForwardMovable.isMovable();
 
