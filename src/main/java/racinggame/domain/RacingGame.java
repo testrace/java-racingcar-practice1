@@ -1,8 +1,11 @@
 package racinggame.domain;
 
+import static java.util.stream.Collectors.toMap;
+
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class RacingGame {
 
@@ -12,14 +15,14 @@ public class RacingGame {
 
     private int raceCount = 0;
 
-    public RacingGame(final int countOfCars, final int countOfTry) {
+    public RacingGame(final String[] names, final int countOfTry) {
         this.countOfTry = countOfTry;
-        this.cars = createCars(countOfCars);
+        this.cars = createCars(names);
     }
 
-    private List<Car> createCars(final int countOfCars) {
-        return IntStream.range(0, countOfCars)
-            .mapToObj(i -> new Car("123"))
+    private List<Car> createCars(final String[] names) {
+        return Arrays.stream(names)
+            .map(Car::new)
             .collect(Collectors.toUnmodifiableList());
     }
 
@@ -32,15 +35,13 @@ public class RacingGame {
         return raceCount != countOfTry;
     }
 
-    public List<Integer> positions() {
-        return cars.stream()
-            .map(Car::getPosition)
-            .map(Position::getValue)
-            .collect(Collectors.toUnmodifiableList());
-    }
-
     private ForwardMovable rolling() {
         return new DefaultForwardMovable(DICE.roll());
+    }
+
+    public Map<String, Integer> carsPositions() {
+        return cars.stream()
+            .collect(toMap(Car::name, Car::position));
     }
 
 }

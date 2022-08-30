@@ -26,6 +26,18 @@ public class Car {
         return position;
     }
 
+    public String name() {
+        return name.value();
+    }
+
+    public int position() {
+        return position.getValue();
+    }
+
+    public boolean isSamePosition(final int position) {
+        return this.position() == position;
+    }
+
     @Override
     public boolean equals(final Object o) {
         if (this == o) {

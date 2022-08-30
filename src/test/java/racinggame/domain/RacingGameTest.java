@@ -16,7 +16,7 @@ class RacingGameTest {
     })
     void gameIsPlaying(int countOfTry, int raceCount, boolean expected) {
         //given
-        final RacingGame racingGame = new RacingGame(1, countOfTry);
+        final RacingGame racingGame = new RacingGame(new String[]{"이름"}, countOfTry);
 
         //when
         for (int i = 0; i < raceCount; i++) {
