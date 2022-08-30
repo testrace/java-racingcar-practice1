@@ -14,4 +14,5 @@ public class DefaultForwardMovable implements ForwardMovable {
     public boolean isMovable() {
         return value >= FORWARD_CONDITION;
     }
+
 }
