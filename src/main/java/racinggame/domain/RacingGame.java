@@ -19,7 +19,7 @@ public class RacingGame {
 
     private List<Car> createCars(final int countOfCars) {
         return IntStream.range(0, countOfCars)
-            .mapToObj(i -> new Car())
+            .mapToObj(i -> new Car("123"))
             .collect(Collectors.toUnmodifiableList());
     }
 
