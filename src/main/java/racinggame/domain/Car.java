@@ -22,20 +22,12 @@ public class Car {
         }
     }
 
-    public Position getPosition() {
-        return position;
-    }
-
     public String name() {
         return name.value();
     }
 
     public int position() {
         return position.getValue();
-    }
-
-    public boolean isSamePosition(final int position) {
-        return this.position() == position;
     }
 
     @Override
@@ -47,11 +39,11 @@ public class Car {
             return false;
         }
         final Car car = (Car) o;
-        return Objects.equals(getPosition(), car.getPosition());
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPosition());
+        return Objects.hash(name, position);
     }
 }
